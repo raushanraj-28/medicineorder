@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pharmacy Panel - MediQuick</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body onload="checkPharmacyAccess(); loadPharmacyOrders(); displayPharmacyInfo();">
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <h1><i class="fas fa-clinic-medical"></i> Pharmacy Dashboard</h1>
+                <div class="user-info">
+                    <span id="pharmacyName">Pharmacy</span>
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="pharmacy-dashboard-header">
+                <div class="stats-bar">
+                    <div class="stat-card">
+                        <i class="fas fa-bell"></i>
+                        <h3 id="availableCount">0</h3>
+                        <p>Available Orders</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <h3 id="myOrdersCount">0</h3>
+                        <p>My Orders</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-truck-loading"></i>
+                        <h3 id="readyCount">0</h3>
+                        <p>Ready Orders</p>
+                    </div>
+                </div>
+                
+                <div id="pharmacyAddressDisplay" class="pharmacy-address-display">
+                   
+                </div>
+            </div>
+
+            <div class="pharmacy-instructions">
+                <h3></i> How It Works:</h3>
+                <ol>
+                    <li><strong>Available Orders:</strong> All new orders are visible to all pharmacies</li>
+                    <li><strong>Accept Quickly:</strong> First pharmacy to accept gets the order</li>
+                    <li><strong>Exclusive:</strong> Once accepted, other pharmacies can't see it</li>
+                    <li><strong>Prepare:</strong> Prepare medicines as per order requirements</li>
+                    <li><strong>Notify:</strong> Mark as "Ready for Pickup" when prepared</li>
+                    <li><strong>Customer Pickup:</strong> Customer will visit your pharmacy to collect</li>
+                </ol>
+            </div>
+
+            <div class="section-card">
+                <h2><i class="fas fa-inbox"></i> Available Orders (Visible to All Pharmacies)</h2>
+                <div class="orders-filter">
+                    <button class="filter-btn active" onclick="filterOrders('all')">All Orders</button>
+                    <button class="filter-btn" onclick="filterOrders('available')">Available Now</button>
+                    <button class="filter-btn" onclick="filterOrders('myorders')">My Orders</button>
+                    <button class="filter-btn" onclick="filterOrders('emergency')">Emergency</button>
+                </div>
+                <div id="pharmacyOrders" class="orders-container">
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2023 MediQuick Pharmacy Dashboard | Compete with other pharmacies to accept orders</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
